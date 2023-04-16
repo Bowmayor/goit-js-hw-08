@@ -1,12 +1,8 @@
+import { galleryItems } from './gallery-items.js';
 import SimpleLightbox from 'simplelightbox';
-import SimpleLightbox from 'simplelightbox/dist/simple-lightbox.esm';
+import 'simplelightbox/dist/simple-lightbox.min.css';
 
-// Add imports above this line
-import { galleryItems } from './gallery-items';
-// Change code below this line
-
-console.log('galleryItems');
-
+console.log(galleryItems);
 
 const galleryList = document.querySelector(".gallery");
 
@@ -26,8 +22,6 @@ const createGalleryMarkup = (items) => {
 
 galleryList.insertAdjacentHTML("beforeend", createGalleryMarkup(galleryItems));
 
-
-
 galleryList.addEventListener("click", (event) => {
   event.preventDefault();
 });
@@ -37,3 +31,6 @@ const gallery = new SimpleLightbox(".gallery a", {
   captionsData: "alt",
   captionDelay: 250,
 });
+
+
+
