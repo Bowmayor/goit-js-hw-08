@@ -1,4 +1,4 @@
-import throttle from 'lodash.throttle'; 
+import throttle from 'lodash.throttle';
 
 const form = document.querySelector('.feedback-form');
 const emailInput = form.querySelector('input[name="email"]');
@@ -27,12 +27,16 @@ document.addEventListener('DOMContentLoaded', restoreState);
 
 form.addEventListener('submit', event => {
   event.preventDefault();
-  const state = {
-    email: emailInput.value,
-    message: messageInput.value,
-  };
-  console.log(state);
-  localStorage.removeItem('feedback-form-state');
-  emailInput.value = '';
-  messageInput.value = '';
+  if (emailInput.value && messageInput.value) {
+    const state = {
+      email: emailInput.value,
+      message: messageInput.value,
+    };
+    console.log(state);
+    localStorage.removeItem('feedback-form-state');
+    emailInput.value = '';
+    messageInput.value = '';
+  } else {
+    alert('Будь ласка, заповніть обидва поля.');
+  }
 });

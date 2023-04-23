@@ -528,14 +528,16 @@ messageInput.addEventListener("input", saveState);
 document.addEventListener("DOMContentLoaded", restoreState);
 form.addEventListener("submit", (event)=>{
     event.preventDefault();
-    const state = {
-        email: emailInput.value,
-        message: messageInput.value
-    };
-    console.log(state);
-    localStorage.removeItem("feedback-form-state");
-    emailInput.value = "";
-    messageInput.value = "";
+    if (emailInput.value && messageInput.value) {
+        const state = {
+            email: emailInput.value,
+            message: messageInput.value
+        };
+        console.log(state);
+        localStorage.removeItem("feedback-form-state");
+        emailInput.value = "";
+        messageInput.value = "";
+    } else alert("\u0411\u0443\u0434\u044C \u043B\u0430\u0441\u043A\u0430, \u0437\u0430\u043F\u043E\u0432\u043D\u0456\u0442\u044C \u043E\u0431\u0438\u0434\u0432\u0430 \u043F\u043E\u043B\u044F.");
 });
 
 },{"lodash.throttle":"bGJVT","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"bGJVT":[function(require,module,exports) {
